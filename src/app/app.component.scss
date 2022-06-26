@@ -1,0 +1,20 @@
+.toolbar {
+  background-color: #3f51b5;
+
+  ::ng-deep {
+    .mat-raised-button.mat-primary {
+      background-color: rgb(0 12 78 / 50%);
+    }
+
+    a.active {
+      .mat-raised-button.mat-primary {
+        background-color: hwb(0deg 0% 100% / 50%);
+      }
+    }
+  }
+}
+
+
+.base {
+  margin-top: 82px;
+}

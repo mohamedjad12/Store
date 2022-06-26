@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-12">
+        <div class="list-header text-center pt-5">
+          <h1>Add Product</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-product shadow p-5">
+    <form class="form py-4" [formGroup]="form" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title">
+            </mat-form-field>
+            <!-- Start :: FrontEnd Validation -->
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                validation: 'required',
+                message: 'Field is required',
+                control: form.controls['title']
+            }"></ng-container>
+            <!-- End :: FrontEnd Validation -->
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Price</mat-label>
+              <input matInput formControlName="price">
+            </mat-form-field>
+
+            <!-- Start :: FrontEnd Validation -->
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Field is required',
+              control: form.controls['price']
+          }"></ng-container>
+            <!-- End :: FrontEnd Validation -->
+          </div>
+
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field class="w-100 " appearance="fill">
+              <mat-label>Image Path</mat-label>
+              <input matInput formControlName="image">
+            </mat-form-field>
+            <!-- Start :: FrontEnd Validation -->
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Field is required',
+              control: form.controls['image']
+            }"></ng-container>
+            <!-- End :: FrontEnd Validation -->
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let item of categoriesList" [value]="item">{{item}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- Start :: FrontEnd Validation -->
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Field is required',
+              control: form.controls['category']
+          }"></ng-container>
+            <!-- End :: FrontEnd Validation -->
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" rows="10"></textarea>
+            </mat-form-field>
+            <!-- Start :: FrontEnd Validation -->
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+              validation: 'required',
+              message: 'Field is required',
+              control: form.controls['description']
+          }"></ng-container>
+            <!-- End :: FrontEnd Validation -->
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form__actions text-right">
+        <button class="px-8" mat-raised-button color="primary">Save</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- Validation -->
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+  <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched) && submitted">
+    <div class="mb-2">
+      <div class="text-danger">
+        {{ message }}
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

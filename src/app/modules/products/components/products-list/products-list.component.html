@@ -1,0 +1,51 @@
+<section class="products-list">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-12">
+        <div class="list-header text-center pt-5">
+          <h1>Products List</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Product -->
+    <ng-container *ngFor="let product of productsList">
+      <div class="col-lg-4 py-2 rounded d-flex align-items-stretch">
+
+        <div class="data shadow rounded py-2">
+          <div class="img-scal rounded" [routerLink]="['../product', product?.id]" role="button">
+            <img class="img-fluid" [src]="product?.image" />
+          </div>
+
+          <div class="product-content p-4 rounded d-flex flex-column ">
+            <h6>{{product?.price | currency:'EGP'}}</h6>
+
+            <a class="d-inline-block my-2 head w-100" [routerLink]="['../product', product?.id]">
+              {{product?.title}}
+            </a>
+
+            <p>
+              {{product?.description}}
+            </p>
+
+            <div class="rating">
+              <ngb-rating [rate]="product?.rating?.rate" [readonly]="true"></ngb-rating>
+              <p>
+                User Count {{product?.rating?.count}}
+              </p>
+            </div>
+
+            <a class="mt-auto w-100" [routerLink]="['../product', product?.id]">
+              <button mat-raised-button color="primary" class="w-100">
+                Details
+                <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_forward</mat-icon>
+              </button>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </ng-container>
+    <!-- End Product -->
+  </div>
+</section>

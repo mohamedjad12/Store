@@ -1,0 +1,32 @@
+<div class="product-details container" *ngIf="dataLoad" >
+  <div class="row">
+    <div class="col-md-6">
+      <div class="product-img p-5">
+        <img [src]="productData?.image" alt="product-img" class="w-100">
+      </div>
+    </div>
+    <div class="col-md-6 p-5 d-flex align-items-center">
+      <div class="produtc-details">
+        <h1 class="font-weight-bold">
+          {{productData?.title}}
+        </h1>
+        <h6><span>Category</span> : {{productData?.category}}</h6>
+        <h6><span>Price</span>  : {{productData?.price | currency:'EGP'}}</h6>
+
+        <div class="description py-2">
+          <p class="">
+            {{productData?.description}}
+          </p>
+        </div>
+
+        <div class="rating">
+          <ngb-rating [rate]="productData?.rating?.rate" [readonly]="true"></ngb-rating>
+          <p>
+            User Count {{productData?.rating?.count}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

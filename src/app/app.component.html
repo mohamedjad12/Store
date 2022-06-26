@@ -1,0 +1,17 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <div class="container">
+    <a routerLink="products/list" class="mx-2" routerLinkActive="active">
+      <button mat-raised-button color="primary">Products</button>
+    </a>
+
+    <a routerLink="products/add-product" class="mx-2" routerLinkActive="active">
+      <button mat-raised-button color="primary">Add Product</button>
+    </a>
+  </div>
+</div>
+
+<div class="mx-4 base" role="main">
+  <router-outlet></router-outlet>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
